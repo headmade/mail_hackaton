@@ -1,11 +1,24 @@
 .row
-  .small-12.columns
-    %h1 New collage
-    %ul.small-block-grid-4.collage-js
-      - @images.each do |image|
-        %li
-          = image_tag image.image, class: 'th', data: {id:image.id}
+  .small-12.columns.collage-js
+    = form_for @collage do |f|
+      = f.text_field :photos, as: :hidden
+      - if @collage.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@collage.errors.count, "error")} prohibited this collage from being saved:"
+          %ul
+            - @collage.errors.full_messages.each do |msg|
+              %li= msg
 
-    = render 'form'
+      %h1 New collage
+      %ul.small-block-grid-4
+        - @images.each do |image|
+          %li
+            = image_tag image.image, class: 'th', data: {id:image.id}
 
-    = link_to 'Back', collages_path
+      .field
+        = f.label :title
+        = f.text_field :title
+      .actions
+        = f.submit 'Save'
+
+      = link_to 'Back', collages_path
