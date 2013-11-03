@@ -27,7 +27,7 @@
         %ul.right
           %li
             - if user_signed_in?
-              = current_user.email
+              = link_to current_user.name, edit_user_registration_path
             - else
               = link_to "Войти", user_omniauth_authorize_path(:mailru)
     %section.main
