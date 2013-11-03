@@ -230,7 +230,7 @@ Devise.setup do |config|
 
   # ==> OmniAuth
   require "omniauth-mailru"
-  config.omniauth :mailru, "712526", "05d9d6f46965e224a8c7873e79a4067d"
+  config.omniauth :mailru, "712528", "1700881e6929683bc616265ae3f82171"
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
