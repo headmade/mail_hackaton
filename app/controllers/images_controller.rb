@@ -8,7 +8,7 @@ class ImagesController < ApplicationController
     mi.photo_each do |photo|
       image = current_user.images.build
       image.title = photo['title']
-      image.image = open(photo['src_big'])
+      image.remote_image_url = photo['src_big']
       image.save!
     end
     redirect_to images_path
