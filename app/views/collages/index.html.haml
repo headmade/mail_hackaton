@@ -1,0 +1,25 @@
+%h1 Listing collages
+
+%table
+  %tr
+    %th Title
+    %th Image
+    %th Photos
+    %th User
+    %th
+    %th
+    %th
+
+  - @collages.each do |collage|
+    %tr
+      %td= collage.title
+      %td= collage.image
+      %td= collage.photos
+      %td= collage.user_id
+      %td= link_to 'Show', collage
+      %td= link_to 'Edit', edit_collage_path(collage)
+      %td= link_to 'Destroy', collage, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Collage', new_collage_path

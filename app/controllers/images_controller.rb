@@ -1,10 +1,24 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
 
+  def import
+    require "open-uri"
+    mi = MailImport.new current_user.uid
+
+    mi.photo_each do |photo|
+      image = current_user.images.build
+      image.title = photo['title']
+      image.image = open(photo['src_big'])
+      image.save!
+    end
+    redirect_to images_path
+
+  end
+
   # GET /images
   # GET /images.json
   def index
-    @images = Image.all
+    @images = current_user.images
   end
 
   # GET /images/1

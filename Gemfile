@@ -35,6 +35,7 @@ gem 'haml-rails'
 gem 'compass-rails', github: 'Compass/compass-rails', branch: 'rails4-hack'
 gem 'zurb-foundation'
 gem "mailru-api", :require => 'mailru/api'
+gem 'rmagick'
 
 gem 'carrierwave'
 group :doc do

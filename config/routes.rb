@@ -1,7 +1,13 @@
 MailHackaton::Application.routes.draw do
+  resources :collages
+
   root 'welcome#index'
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  resources :images
+  resources :images do
+    collection do
+      get :import
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @collage.title
+%p
+  %b Image:
+  = @collage.image
+%p
+  %b Photos:
+  = @collage.photos
+%p
+  %b User:
+  = @collage.user_id
+
+= link_to 'Edit', edit_collage_path(@collage)
+\|
+= link_to 'Back', collages_path
