@@ -68,13 +68,12 @@ set :bundle_cmd,      "rvm use #{rvm_ruby_string} do bundle"
 # Настройка системы контроля версий и репозитария,
 # по умолчанию - git, если используется иная система версий,
 # нужно изменить значение scm.
-set :scm,             :git
-
 # Предполагается, что вы размещаете репозиторий Git в вашем
 # домашнем каталоге в подкаталоге git/<имя проекта>.git.
 # Подробнее о создании репозитория читайте в нашем блоге
 # http://locum.ru/blog/hosting/git-on-locum
 # set :repository,      "ssh://#{user}@#{deploy_server}/home/#{user}/git/#{application}.git"
+set :scm,             :git
 set :repository, "git@github.com:headmade/mail_hackaton.git"
 
 # set :scm, :none
@@ -86,7 +85,7 @@ set :repository, "git@github.com:headmade/mail_hackaton.git"
 
 ## --- Ниже этого места ничего менять скорее всего не нужно ---
 
-before 'deploy:finalize_update', 'remove_local_rvm_files', 'set_current_release'
+before 'deploy:finalize_update', "deploy:cleanup", 'remove_local_rvm_files', 'set_current_release'
 task :set_current_release, :roles => :app do
     set :current_release, latest_release
 end
