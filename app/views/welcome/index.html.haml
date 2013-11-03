@@ -1,2 +1,8 @@
-%h1 Welcome#index
-%p Find me in app/views/welcome/index.html.haml
+.row
+  .columns.small-12
+    %br
+    - if user_signed_in?
+      = link_to "Импортирвать фото с Mail.ru", import_images_path, class: 'button big'
+      = link_to "Создать коллаж", new_collage_path, class: 'button big'
+    - else
+      = link_to "Войти с помощью Mail.ru", user_omniauth_authorize_path(:mailru), class: 'button big'

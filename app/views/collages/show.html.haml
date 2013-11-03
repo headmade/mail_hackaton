@@ -7,14 +7,9 @@
         = @collage.title
     %p
       = link_to "rerender", rerender_collage_path, class: 'button'
+      = link_to "Загрузить на mail.ru", "#", class: 'button'
     %p
       = image_tag @collage.image
-    %p
-      %b Photos:
-      = @collage.photos
-    %p
-      %b User:
-      = @collage.user_id
 
     = link_to 'Edit', edit_collage_path(@collage)
     \|

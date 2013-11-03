@@ -1,25 +1,14 @@
-%h1 Listing collages
+.row
+  .small-12.columns
+    %h1 Listing collages
+    = link_to 'New Collage', new_collage_path
+    %ul.small-block-grid-4
+      - @collages.each do |collage|
+        %li
+          = collage.title
+          = link_to collage do
+            = image_tag collage.image, class: 'th'
+          = link_to 'Edit', edit_collage_path(collage)
+          = link_to 'Destroy', collage, class: 'tiny button alert',:method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%table
-  %tr
-    %th Title
-    %th Image
-    %th Photos
-    %th User
-    %th
-    %th
-    %th
 
-  - @collages.each do |collage|
-    %tr
-      %td= collage.title
-      %td= collage.image
-      %td= collage.photos
-      %td= collage.user_id
-      %td= link_to 'Show', collage
-      %td= link_to 'Edit', edit_collage_path(collage)
-      %td= link_to 'Destroy', collage, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Collage', new_collage_path
