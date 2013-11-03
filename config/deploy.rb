@@ -85,7 +85,7 @@ set :repository, "git@github.com:headmade/mail_hackaton.git"
 
 ## --- Ниже этого места ничего менять скорее всего не нужно ---
 
-before 'deploy:finalize_update', "deploy:cleanup", 'remove_local_rvm_files', 'set_current_release', 'symlink_uploads'
+before 'deploy:finalize_update', "deploy:cleanup", 'remove_local_rvm_files', 'set_current_release', 'symlink_shared'
 task :set_current_release, :roles => :app do
     set :current_release, latest_release
 end
@@ -94,8 +94,10 @@ task :remove_local_rvm_files, :role => :app do
   run "(cd #{latest_release}; rm .ruby-gemset; rm .ruby-version)"
 end
 
-task :symlink_uploads do
+task :symlink_shared do
   run "ln -nfs #{shared_path}/uploads  #{release_path}/public/uploads"
+  run "mkdir #{release_path}/tmp"
+  run "ln -nfs #{shared_path}/pids  #{release_path}/tmp/pids"
 end
 
 set :unicorn_start_cmd, "(cd #{deploy_to}/current; rvm use #{rvm_ruby_string} do bundle exec unicorn_rails -Dc #{unicorn_conf})"
