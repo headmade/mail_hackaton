@@ -26,7 +26,10 @@
       %section.top-bar-section
         %ul.right
           %li
-            = link_to "Войти", user_omniauth_authorize_path(:mailru)
+            - if user_signed_in?
+              = current_user.email
+            - else
+              = link_to "Войти", user_omniauth_authorize_path(:mailru)
     %section.main
       = yield
     = javascript_include_tag "application"
