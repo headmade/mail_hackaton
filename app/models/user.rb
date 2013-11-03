@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [:mailru]
 
-  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+  def self.find_for_mailru_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
       user = User.create(name:auth.extra.raw_info.name,
