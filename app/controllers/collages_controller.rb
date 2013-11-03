@@ -1,5 +1,10 @@
 class CollagesController < ApplicationController
-  before_action :set_collage, only: [:show, :edit, :update, :destroy]
+  before_action :set_collage, only: [:show, :edit, :update, :destroy, :rerender]
+
+  def rerender
+    @collage.save!
+    redirect_to :back
+  end
 
   # GET /collages
   # GET /collages.json

@@ -3,8 +3,10 @@
     %p#notice= notice
 
     %p
-      %b Title:
-      = @collage.title
+      %h2
+        = @collage.title
+    %p
+      = link_to "rerender", rerender_collage_path, class: 'button'
     %p
       = image_tag @collage.image
     %p

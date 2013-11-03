@@ -1,5 +1,9 @@
 MailHackaton::Application.routes.draw do
-  resources :collages
+  resources :collages do
+    member do
+      get :rerender
+    end
+  end
 
   root 'welcome#index'
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
