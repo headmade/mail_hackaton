@@ -31,6 +31,9 @@ gem 'jbuilder', '~> 1.2'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-mailru'
+gem 'haml-rails'
+gem 'compass-rails', github: 'Compass/compass-rails', branch: 'rails4-hack'
+gem 'zurb-foundation'
 
 gem 'carrierwave'
 group :doc do
