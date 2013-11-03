@@ -25,7 +25,7 @@ class CollagesController < ApplicationController
   # POST /collages
   # POST /collages.json
   def create
-    @collage = Collage.new(collage_params)
+    @collage = current_user.collages.build(collage_params)
 
     respond_to do |format|
       if @collage.save
