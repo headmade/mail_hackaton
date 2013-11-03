@@ -230,7 +230,7 @@ Devise.setup do |config|
 
   # ==> OmniAuth
   require "omniauth-mailru"
-  config.omniauth :mailru, "712528", "1700881e6929683bc616265ae3f82171"
+  config.omniauth :mailru, "712528", "1700881e6929683bc616265ae3f82171", callback_url: 'http://collage.headmade.pro/users/auth/mailru'
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
